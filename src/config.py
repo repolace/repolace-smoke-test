@@ -12,7 +12,7 @@ def parse_config(path):
     Applies defaults for any key the file leaves out.
     """
     text = Path(path).read_text(encoding="utf-8")
-    data = json.loads(text)
+    data = json.loads(text) if text.strip() else {}
     data.setdefault("timeout_seconds", DEFAULT_TIMEOUT_SECONDS)
     return data
 
